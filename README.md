@@ -1,3 +1,3 @@
-# comp_astro_24
+# Computational Astrophysics 2024 - Group 16
 
-Base repository for the computational astrophysics course
+Repository for the "Computational Astrophysics" course at Unipd in academic year 2024/2025.
