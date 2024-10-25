@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+/Assigments/Assigments 2/Data
+
 # Distribution / packaging
 .Python
 build/
