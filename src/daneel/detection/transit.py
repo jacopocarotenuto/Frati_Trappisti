@@ -13,7 +13,7 @@ params.w = 272.7                      #longitude of periastron (in degrees)
 params.limb_dark = "quadratic"        #limb darkening model
 params.u = [0.574, 0.197]             #limb darkening coefficients [u1, u2, u3, u4]
 
-t = np.linspace(-0.25,0.25,100)              #times at which to calculate light curve
+t = np.linspace(-0.10,0.10,100)              #times at which to calculate light curve
 m = batman.TransitModel(params, t)
 
 flux = m.light_curve(params)
