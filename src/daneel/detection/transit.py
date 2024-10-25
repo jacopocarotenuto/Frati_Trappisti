@@ -17,17 +17,18 @@ t = np.linspace(-0.10,0.10,100)              #times at which to calculate light 
 m = batman.TransitModel(params, t)
 
 flux = m.light_curve(params)
-radii = np.linspace(0.09, 0.11, 20)
+radii = np.array([0.0975, 0.1950, 0.3900])
+fig = plt.figure(figsize=(10, 6))
 for r in radii:
         params.rp = r                           #updates planet radius
         new_flux = m.light_curve(params)        #recalculates light curve
-fig = plt.figure(figsize=(10, 6))
-plt.plot(t, flux, label=f'Light curve', color='royalblue')
-plt.xlabel("Time from Transit Center (days)")
-plt.ylabel("Relative Flux")
-plt.title("Exoplanet Transit Light Curve")
+        plt.plot(t, new_flux, label=f'Light curve r='+str(r))
+
+plt.xlabel('Time from transit center (Days)')
+plt.ylabel('Relative Flux')
+plt.title('Exoplanet Transit Light Curve')
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.show()
-fig.savefig('WASP12-b_assignment1_taskF.png')
+fig.savefig('assignment2_taskBC.png')
