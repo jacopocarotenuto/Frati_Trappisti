@@ -1,0 +1,21 @@
+Precision Scores:
+Linear Train Precision: 0.589
+Gaussian Train Precision: 0.565
+Polynomial Train Precision: 0.569
+Linear Test Precision: 0.556
+Gaussian Test Precision: 0.554
+Polynomial Test Precision: 0.560
+
+Confusion Matrices:
+Linear Test Confusion Matrix:
+43 211
+52 264
+
+Gaussian Test Confusion Matrix:
+0 254
+0 316
+
+Polynomial Test Confusion Matrix:
+55 199
+63 253
+
