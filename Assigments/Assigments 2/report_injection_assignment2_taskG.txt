@@ -1,0 +1,17 @@
+Precision Scores:
+Train Precision: 0.614
+Dev Precision: 0.491
+
+Recall Scores:
+Train Recall: 0.300
+Dev Recall: 0.082
+
+Confusion Matrices:
+Train Confusion Matrix:
+1686 540
+2002 859
+
+Dev Confusion Matrix:
+227 27
+290 26
+
