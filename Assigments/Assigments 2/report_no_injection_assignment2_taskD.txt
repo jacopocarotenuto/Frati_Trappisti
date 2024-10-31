@@ -16,6 +16,6 @@ Gaussian Test Confusion Matrix:
 5 0
 
 Polynomial Test Confusion Matrix:
-565 0
+559 6
 5 0
 
