@@ -22,7 +22,7 @@ def main():
         dest="detect",
         required=False,
         help="Initialise detection algorithms for Exoplanets",
-        action="store_true",
+        action="store",
     )
 
     parser.add_argument(
@@ -42,7 +42,7 @@ def main():
 
     input_pars = Parameters(args.input_file).params
 
-    if args.detect:
+    if args.detect == "svm":
         DetectionWithSVM(Parameters(args.input_file))
     if args.atmosphere:
         pass
