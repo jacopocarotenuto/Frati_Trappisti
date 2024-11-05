@@ -2,6 +2,7 @@ import datetime
 import argparse
 from daneel.parameters import Parameters
 from daneel.detection import *
+from daneel.detection.detection_methods import *
 
 
 def main():
@@ -39,11 +40,14 @@ def main():
     """Launch Daneel"""
     start = datetime.datetime.now()
     print(f"Daneel starts at {start}")
-
-    input_pars = Parameters(args.input_file).params
+    param = Parameters(args.input_file)
+    input_pars = param.params
 
     if args.detect == "svm":
-        DetectionWithSVM(Parameters(args.input_file))
+        DetectionWithSVM(param)
+    if args.detect == "nn":
+        DetectionWithNN(param)
+    
     if args.atmosphere:
         pass
 

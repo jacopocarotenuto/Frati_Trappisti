@@ -1,3 +1,5 @@
 train_dataset_path: "/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/kepler/data_injected/exoTrain.csv"
 test_dataset_path: "/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/kepler/data_injected/exoTest.csv"
 type_of_kernel: "rbf"
+batch_size: 32
+epochs: 50
