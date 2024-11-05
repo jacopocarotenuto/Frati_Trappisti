@@ -28,7 +28,7 @@ def main():
     parser.add_argument(
         "-a",
         "--atmosphere",
-        dest="complete",
+        dest="atmosphere",
         required=False,
         help="Atmospheric Characterisazion from input transmission spectrum",
         action="store_true",
@@ -43,7 +43,7 @@ def main():
     input_pars = Parameters(args.input_file).params
 
     if args.detect:
-        pass
+        DetectionWithSVM(Parameters(args.input_file))
     if args.atmosphere:
         pass
 
