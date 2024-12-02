@@ -90,10 +90,11 @@ def DetectionWithNN(param):
     print(f"Test Accuracy: {test_accuracy:.2f}")
     
 def build_simple_CNN(shape):
+    print("Building model with input shape:", shape)
     model = tf.keras.models.Sequential(
         [
-        tf.keras.layers.Input(shape),
-        tf.keras.layers.Conv2D(5, (2,2)),
+        tf.keras.layers.Input((shape[0],shape[1],1)),
+        tf.keras.layers.Conv2D(5, (5,5)),
         tf.keras.layers.Conv2D(3, (2,2)),
         tf.keras.layers.Conv2D(1,(1,1)),
         tf.keras.layers.Flatten(),
@@ -101,23 +102,23 @@ def build_simple_CNN(shape):
         tf.keras.layers.Dropout(0.2),
         tf.keras.layers.Dense(1, activation="sigmoid")]
     )
-    loss_fn = tf.keras.losses.BinaryCrossentropy(from_logits=True)
+    loss_fn = tf.keras.losses.BinaryCrossentropy(from_logits=False)
     model.compile(optimizer="adam", loss=loss_fn, metrics=["accuracy"])
     return model
 
 def DetectionWithCNN(param):
     X_train, Y_train, X_test, Y_test = LoadLightFluxData(param=param)
+    X_train = np.pad(X_train,((0,0),(0,2)))
+    X_test = np.pad(X_test,((0,0),(0,2)))
     nearest_square = np.int64(np.floor(np.sqrt(X_train.shape[1])))
     X_train = X_train[:,:nearest_square**2].reshape(X_train.shape[0],nearest_square,nearest_square)
     X_test = X_test[:,:nearest_square**2].reshape(X_test.shape[0],nearest_square,nearest_square)
-    X_train = X_train.reshape()
+    print("X_train shape:", X_train.shape)
     
     model = build_simple_CNN(X_train.shape[1:])
-    sm = SMOTE()
-    X_train_sm, Y_train_sm = sm.fit_resample(X_train, Y_train)
     epochs = param.get("epochs")
     batch_size = param.get("batch_size")
-    history = model.fit(X_train_sm, Y_train_sm, epochs=epochs, batch_size=batch_size)
+    history = model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size)
     
     train_output = np.rint(model.predict(X_train, batch_size=batch_size))
     test_output = np.rint(model.predict(X_test, batch_size=batch_size))

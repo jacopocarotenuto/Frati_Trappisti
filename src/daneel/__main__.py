@@ -57,6 +57,8 @@ def main():
         DetectionWithSVM(param)
     if args.detect == "nn":
         DetectionWithNN(param)
+    if args.detect == "cnn":
+        DetectionWithCNN(param)
     
     if args.atmosphere:
         pass
