@@ -7,9 +7,9 @@ __pycache__/
 *.so
 
 /Assigments/Assigments 2/Data
-/Assigments/Assigments 3/phoenix
-/Assigments/Assigments 3/cia
-/Assigments/Assigments 3/xsecs
+Assigments/Assigment 3/phoenix/*
+Assigments/Assigment 3/cia/*
+Assigments/Assigment 3/xsecs/*
 # Distribution / packaging
 .Python
 build/
@@ -164,3 +164,4 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+Assigments/Assigment 3/phoenix/BT-Settl_M-0.0a+0.0/lte016.0-4.0-0.0a+0.0.BT-Settl.spec.fits.gz
