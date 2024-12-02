@@ -7,7 +7,9 @@ __pycache__/
 *.so
 
 /Assigments/Assigments 2/Data
-
+/Assigments/Assigments 3/phoenix
+/Assigments/Assigments 3/cia
+/Assigments/Assigments 3/xsecs
 # Distribution / packaging
 .Python
 build/
