@@ -56,8 +56,7 @@ def DetectionWithSVM(param):
     print(f"Train Accuracy: {train_accuracy:.2f}")
     print(f"Test Accuracy: {test_accuracy:.2f}")
 
-
-def build_network(shape):
+def build_simple_NN(shape):
     model = tf.keras.models.Sequential(
         [
             tf.keras.layers.Input(shape),
@@ -74,7 +73,7 @@ def build_network(shape):
 def DetectionWithNN(param):
     # Define Network
     X_train, Y_train, X_test, Y_test = LoadLightFluxData(param=param)
-    model = build_network(X_train.shape[1:])
+    model = build_simple_NN(X_train.shape[1:])
     sm = SMOTE()
     X_train_sm, Y_train_sm = sm.fit_resample(X_train, Y_train)
     epochs = param.get("epochs")
@@ -90,3 +89,41 @@ def DetectionWithNN(param):
     print(f"Train Accuracy: {train_accuracy:.2f}")
     print(f"Test Accuracy: {test_accuracy:.2f}")
     
+def build_simple_CNN(shape):
+    model = tf.keras.models.Sequential(
+        [
+        tf.keras.layers.Input(shape),
+        tf.keras.layers.Conv2D(5, (2,2)),
+        tf.keras.layers.Conv2D(3, (2,2)),
+        tf.keras.layers.Conv2D(1,(1,1)),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(1, activation = "relu"),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(1, activation="sigmoid")]
+    )
+    loss_fn = tf.keras.losses.BinaryCrossentropy(from_logits=True)
+    model.compile(optimizer="adam", loss=loss_fn, metrics=["accuracy"])
+    return model
+
+def DetectionWithCNN(param):
+    X_train, Y_train, X_test, Y_test = LoadLightFluxData(param=param)
+    nearest_square = np.int64(np.floor(np.sqrt(X_train.shape[1])))
+    X_train = X_train[:,:nearest_square**2].reshape(X_train.shape[0],nearest_square,nearest_square)
+    X_test = X_test[:,:nearest_square**2].reshape(X_test.shape[0],nearest_square,nearest_square)
+    X_train = X_train.reshape()
+    
+    model = build_simple_CNN(X_train.shape[1:])
+    sm = SMOTE()
+    X_train_sm, Y_train_sm = sm.fit_resample(X_train, Y_train)
+    epochs = param.get("epochs")
+    batch_size = param.get("batch_size")
+    history = model.fit(X_train_sm, Y_train_sm, epochs=epochs, batch_size=batch_size)
+    
+    train_output = np.rint(model.predict(X_train, batch_size=batch_size))
+    test_output = np.rint(model.predict(X_test, batch_size=batch_size))
+    
+    train_accuracy = accuracy_score(Y_train, train_output)
+    test_accuracy = accuracy_score(Y_test, test_output)
+    
+    print(f"Train Accuracy: {train_accuracy:.2f}")
+    print(f"Test Accuracy: {test_accuracy:.2f}")

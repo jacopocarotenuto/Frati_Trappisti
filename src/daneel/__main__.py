@@ -39,10 +39,9 @@ def main():
         "-t",
         "--transit",
         dest="transit",
-        type=bool,
         required=False,
         help="If present compute the light curve",
-	action="store_true"
+        action="store_true"
     )
 
     args = parser.parse_args()
@@ -53,8 +52,7 @@ def main():
     param = Parameters(args.input_file)
     input_pars = param.params
     if args.transit:
-	calculate_transit(param)
-
+        calculate_transit(param)
     if args.detect == "svm":
         DetectionWithSVM(param)
     if args.detect == "nn":
