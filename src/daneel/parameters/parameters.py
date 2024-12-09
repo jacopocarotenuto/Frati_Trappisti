@@ -25,3 +25,6 @@ class Parameters:
 
     def get(self, param):
         return self.params[param]
+    
+    def get_all(self):
+        return self.params

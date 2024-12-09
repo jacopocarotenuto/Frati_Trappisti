@@ -5,4 +5,26 @@ batch_size: 32
 epochs: 20
 data_path: "/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/img_data/img.npy"
 label_path: "/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/img_data/img_label.npy"
-Training: False
+Training: True
+
+ForwardModelParameters:
+  equilibrium_temperature: 852
+  planet_mass: 0.197
+  planet_radius: 0.995
+  star_temperature: 4803
+  star_radius: 0.765
+  stellar_metallicity: 0.10
+  stellar_mass: 0.770
+  gas:
+    "H2O": 0.0000338844
+    "CO2": 0.0000138038
+    "Na" : 0.0000010232
+
+fit_parameters:
+  planet_radius: [0.8,1.6]
+  T_irr: [500,1000]
+
+ForwardModelFilePath: "./ForwardModelData.dat"
+ObservationDataFile: "./ForwardModelData.dat"
+path_to_cia: "/home/ubuntu/comp_astro_24/Assigments/Assigment 3/cia/hitran/"
+path_to_xsec: "/home/ubuntu/comp_astro_24/Assigments/Assigment 3/xsecs/"

@@ -5,6 +5,8 @@ from daneel.detection import *
 from daneel.detection.transit import *
 from daneel.detection.detection_methods import *
 from daneel.dream.dream import *
+from daneel.atmosphere.model_creation import *
+from daneel.atmosphere.retrieval import *
 
 
 def main():
@@ -34,7 +36,7 @@ def main():
         dest="atmosphere",
         required=False,
         help="Atmospheric Characterisazion from input transmission spectrum",
-        action="store_true",
+        action="store"
     )
 
     parser.add_argument(
@@ -70,8 +72,10 @@ def main():
     if args.detect == "cnn":
         DetectionWithCNN(param)
     
-    if args.atmosphere:
-        pass
+    if args.atmosphere == "model":
+        create_forward_model(param)
+    if args.atmosphere == "retrieve":
+        perform_atmospheric_retrieval(param)
     
     if args.dream:
         DreamNewWorlds(param)
