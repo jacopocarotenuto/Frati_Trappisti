@@ -1,10 +1,10 @@
-p = 5.508023 # period [days]
-r = 0.13650 # planet radius [solar radii]
-a = 16.04 # semi-major axis [solar radii]
-i = 88.8 # inclination [degrees]
-e = 0.084
-w = 120 # longitude of the periastron [degrees]
-l = "quadratic" # limd darkening model
-u = [0.506,0.128] # limb darkening coefficients
+p : 5.508023 # period [days]
+r : 0.13650 # planet radius [solar radii]
+a : 16.04 # semi-major axis [solar radii]
+i : 88.8 # inclination [degrees]
+e : 0.084
+w : 120 # longitude of the periastron [degrees]
+l : "quadratic" # limd darkening model
+u : [0.506,0.128] # limb darkening coefficients
 
 

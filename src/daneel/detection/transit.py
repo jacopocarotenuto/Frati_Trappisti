@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 #HAT-P-18b hartman et al 2011
 def calculate_transit(parameters):
 	params = batman.TransitParams()       #object to store transit parameters
-	params.t0 = parameters.get("t0")                        #time of inferior conjunction
+	params.t0 = 0.                        #time of inferior conjunction
 	params.per = parameters.get("p")                    #orbital period
 	params.rp = parameters.get("r")                    #planet radius (in units of stellar radii)
 	params.a = parameters.get("a")                      #semi-major axis (in units of stellar radii)
@@ -21,9 +21,9 @@ def calculate_transit(parameters):
 	radii = np.array([params.rp/2, params.rp, params.rp*2])
 	fig = plt.figure(figsize=(10, 6))
 	for r in radii:
-	        params.rp = r                           #updates planet radius
-	        new_flux = m.light_curve(params)        #recalculates light curve
-	        plt.plot(t, new_flux, label=f'Light curve r='+str(r))
+			params.rp = r                           #updates planet radius
+			new_flux = m.light_curve(params)        #recalculates light curve
+			plt.plot(t, new_flux, label=f'Light curve r='+str(r))
 
 	plt.xlabel('Time from transit center (Days)')
 	plt.ylabel('Relative Flux')
@@ -32,4 +32,4 @@ def calculate_transit(parameters):
 	plt.legend()
 	plt.tight_layout()
 	plt.show()
-fig.savefig('assignment2_taskBC.png')
+	fig.savefig('assignment2_taskBC.png')

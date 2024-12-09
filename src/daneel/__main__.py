@@ -2,6 +2,7 @@ import datetime
 import argparse
 from daneel.parameters import Parameters
 from daneel.detection import *
+from daneel.detection.transit import *
 from daneel.detection.detection_methods import *
 from daneel.dream.dream import *
 
