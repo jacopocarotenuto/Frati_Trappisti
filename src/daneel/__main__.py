@@ -3,6 +3,7 @@ import argparse
 from daneel.parameters import Parameters
 from daneel.detection import *
 from daneel.detection.detection_methods import *
+from daneel.dream.dream import *
 
 
 def main():
@@ -43,6 +44,14 @@ def main():
         help="If present compute the light curve",
         action="store_true"
     )
+    
+    parser.add_argument(
+        "--dream",
+        dest="dream",
+        required=False,
+        help="Dream a new world",
+        action="store_true",
+    )
 
     args = parser.parse_args()
 
@@ -62,6 +71,9 @@ def main():
     
     if args.atmosphere:
         pass
+    
+    if args.dream:
+        DreamNewWorlds(param)
 
     finish = datetime.datetime.now()
     print(f"Daneel finishes at {finish}")

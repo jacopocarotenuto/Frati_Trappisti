@@ -111,8 +111,10 @@ def DetectionWithCNN(param):
     X_train = np.pad(X_train,((0,0),(0,2)))
     X_test = np.pad(X_test,((0,0),(0,2)))
     nearest_square = np.int64(np.floor(np.sqrt(X_train.shape[1])))
-    X_train = X_train[:,:nearest_square**2].reshape(X_train.shape[0],nearest_square,nearest_square)
-    X_test = X_test[:,:nearest_square**2].reshape(X_test.shape[0],nearest_square,nearest_square)
+    X_train = X_train[:,:nearest_square**2].reshape(X_train.shape[0],nearest_square,nearest_square,1)
+    X_test = X_test[:,:nearest_square**2].reshape(X_test.shape[0],nearest_square,nearest_square,1)
+    np.save("/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/img_data/img.npy",np.vstack([X_train,X_test]))
+    np.save("/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/img_data/img_label.npy", np.concatenate([Y_train,Y_test]))
     print("X_train shape:", X_train.shape)
     
     model = build_simple_CNN(X_train.shape[1:])

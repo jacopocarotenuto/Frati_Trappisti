@@ -3,3 +3,6 @@ test_dataset_path: "/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/kepl
 type_of_kernel: "rbf"
 batch_size: 32
 epochs: 20
+data_path: "/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/img_data/img.npy"
+label_path: "/home/ubuntu/comp_astro_24/Assigments/Assigments 2/Data/img_data/img_label.npy"
+Training: False
