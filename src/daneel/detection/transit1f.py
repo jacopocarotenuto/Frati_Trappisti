@@ -1,30 +1,26 @@
 import batman
 import numpy as np
 import matplotlib.pyplot as plt
-#HAT-P-18b hartman et al 2011
 
-params = batman.TransitParams()       #object to store transit parameters
-params.t0 = 0.                        #time of inferior conjunction
-params.per = 5.508023               #orbital period
-params.rp = 0.13650                     #planet radius (in units of stellar radii)
-params.a = 16.04                       #semi-major axis (in units of stellar radii)
-params.inc = 88.8                    #orbital inclination (in degrees)
-params.ecc = 0.084                   #eccentricity
-params.w = 120                      #longitude of periastron (in degrees)
-params.limb_dark = "quadratic"        #limb darkening model
-params.u = [0.506, 0.128]             #limb darkening coefficients [u1, u2]
+# HAT-P-18b Hartman et al. 2011
+params = batman.TransitParams()       # Object to store transit parameters
+params.t0 = 0.                        # Time of inferior conjunction
+params.per = 5.508023                 # Orbital period (days)
+params.rp = 0.13650                   # Planet radius (in units of stellar radii)
+params.a = 16.04                      # Semi-major axis (in units of stellar radii)
+params.inc = 88.8                     # Orbital inclination (degrees)
+params.ecc = 0.084                    # Eccentricity
+params.w = 120                        # Longitude of periastron (degrees)
+params.limb_dark = "quadratic"        # Limb darkening model
+params.u = [0.506, 0.128]             # Limb darkening coefficients [u1, u2]
 
-t = np.linspace(-0.25,0.25,100)              #times at which to calculate ligh>
+t = np.linspace(-0.25, 0.25, 100)     # Times at which to calculate light curve
 m = batman.TransitModel(params, t)
 
-
 flux = m.light_curve(params)
-#radii = np.linspace(0.09, 0.11, 20)
-#for r in radii:
-#        params.rp = r                           #updates planet radius
-#        new_flux = m.light_curve(params)        #recalculates light curve
-fig = plt.figure()
-plt.plot(t, flux, label='Transit Light Curve')
+
+fig = plt.figure(figsize=(8, 6))
+plt.plot(t, flux, label='Light Curve')
 plt.xlabel('Time from transit center (Days)')
 plt.ylabel('Relative Flux')
 plt.title('HAT-P-18b Transit Light Curve')
@@ -32,6 +28,5 @@ plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.show()
-fig.savefig('HAT-P-18b_assignment1_taskF_try.png')
+fig.savefig('HAT-P-18b_assignment1_taskF.png')
 
-	
