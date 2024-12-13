@@ -19,6 +19,16 @@ Where the `PATH_TO_PARAMETER_FILE.yaml` is a .yaml file containing all the requi
 - Limb darkening model (eg: "quadratic")
 - Limb darkening coefficients (array)
 
+### Detection Calculations
+
+Daneel can detect planets in lightcurve data with different methods. The methods available are: Support Vector Machine (svm), Neural Network (nn), Convolutional Neural Network (cnn).
+The parameters of the detection method (such as epochs, training files, learning rate...) are to be specified in a .yaml file.
+
+The detection is invoked like this:
+`daneel -i PATH_TO_PARAMETERS.yaml -d DETECTION_METHOD`
+
+Also, daneel can generate new lightflux images with the command
+`daneel -i PATH_TO_PARAMETERS.yamls --dream`
 
 
 
