@@ -6,5 +6,6 @@ e : 0.084
 w : 120 # longitude of the periastron [degrees]
 l : "quadratic" # limd darkening model
 u : [0.506,0.128] # limb darkening coefficients
+name: "HAT-P-18b"
 
 

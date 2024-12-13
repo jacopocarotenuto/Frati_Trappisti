@@ -27,7 +27,7 @@ def calculate_transit(parameters):
 
 	plt.xlabel('Time from transit center (Days)')
 	plt.ylabel('Relative Flux')
-	plt.title('Exoplanet Transit Light Curve')
+	plt.title(parameters.get("name") + ' Transit Light Curve')
 	plt.grid(True)
 	plt.legend()
 	plt.tight_layout()
