@@ -33,4 +33,3 @@ def calculate_transit(parameters):
 	plt.tight_layout()
 	plt.show()
 	fig.savefig('assignment2_taskBC.png')
-	
