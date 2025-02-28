@@ -5,6 +5,7 @@ __pycache__/
 *.DS_Store
 # C extensions
 *.so
+LatexReport/*
 
 /Assigments/Assigments 2/Data
 Assigments/Assigment 3/phoenix/*
